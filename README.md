@@ -12,6 +12,7 @@ In architecture.ipynb file you can see reason why I have chosen given CNN struct
 Training is executed on Image Generators provided by keras to achieve best volatility in the data. With this setup one epoch last approximately 100s - 120s on my machine.
 
 My best resut in training was:
+
 loss: 0.0356 - accuracy: 0.9893; on training data
 
 loss: 0.0393 - accuracy: 0.9939; on validation data
