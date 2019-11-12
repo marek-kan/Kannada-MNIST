@@ -13,6 +13,7 @@ Training is executed on Image Generators provided by keras to achieve best volat
 
 My best resut in training was:
 loss: 0.0356 - accuracy: 0.9893; on training data
+
 loss: 0.0393 - accuracy: 0.9939; on validation data
 
 This model has 0.9786 accuracy on Kaggle test dataset.
