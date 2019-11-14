@@ -4,14 +4,10 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from tensorflow.keras.utils import to_categorical
 import os
-#os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-#tf.compat.v1.keras.backend.set_session(tf.compat.v1.Session(config=tf.compat.v1.ConfigProto(intra_op_parallelism_threads=4, inter_op_parallelism_threads=4)))
+
 gpus = tf.config.experimental.list_physical_devices('GPU')
 tf.config.experimental.set_visible_devices(gpus[0], 'GPU')
 
-#data= np.load('data1.npz')
-#x = data['inputs']/255
-#y = data['target']
 data = pd.read_csv(r'data/train.csv')
 data = data.append(pd.read_csv(r'data/Dig-MNIST.csv'))
 x = data.drop(['label'], axis=1)
@@ -47,7 +43,6 @@ stop = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=3)
 
 with tf.device('/device:GPU:0'):
     model = tf.keras.Sequential()
-    #model.add(tf.keras.layers.Flatten(input_shape=(1,28,28)))
     model.add(tf.keras.layers.Conv2D(32, kernel_size = 3, activation='relu', data_format='channels_first'))
     model.add(tf.keras.layers.BatchNormalization())
     model.add(tf.keras.layers.Conv2D(32, kernel_size = 3, activation='relu'))
